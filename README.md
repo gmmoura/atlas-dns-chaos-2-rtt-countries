@@ -17,6 +17,10 @@
       
 
 ## Demo
+   * https://gmmoura.github.io/atlas-dns-chaos-2-rtt-countries/visualization/rtt.html
+ 
+ 
+## How-to for the above demo 
 
  ```bash
  
@@ -62,4 +66,4 @@ The demo below will produce the following output files on your local dir:
    * Use JSON or CSV output to produce nice World heatmaps
 
 ### Demo visualization
-   * Go to ``visualization/``      
+   * Go to ``visualization/render.py``      
