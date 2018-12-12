@@ -61,11 +61,11 @@ The demo below will produce the following output files on your local dir:
    * ``20181212-stats.json``: same as above, but in JSON
 
 
-### What can you do with this?
+##  What can you do with this?
  
-   * Use JSON or CSV output to produce nice World heatmaps
+   * Use JSON or CSV output to produce nice World heatmaps (see demo visualization below)
 
-### Demo visualization
+##  Demo visualization
    * Go to ``visualization/``
    
 ``` bash
