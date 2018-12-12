@@ -76,7 +76,7 @@ def main():
     jsonDict = dict()
     with open(date + "-stats.csv", "w") as f:
 
-        f.write("country, nMesurements,mean,25p,50p,75p,90p,max\n")
+        f.write("country, nMesurements,meanRTT,percentile25RTT,medianRTT,percentile75RTT,percentile90RTT,maxRTT\n")
         for k, values in ccDict.items():
             country = k
             f.write(
