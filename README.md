@@ -4,7 +4,7 @@
 ## Summary 
 
    * This country does the following:
-      1. Download and parses and RIPE CHAOS atlas DNS measurements
+      1. Download and parses RIPE CHAOS atlas DNS measurements
       1. Produces a CSV file with the results, and enriches the results with:
          * probe's country
          * probe's continent
