@@ -66,4 +66,10 @@ The demo below will produce the following output files on your local dir:
    * Use JSON or CSV output to produce nice World heatmaps
 
 ### Demo visualization
-   * Go to ``visualization/render.py``      
+   * Go to ``visualization/``
+   
+``` bash
+$ python render.py 
+$ firefox rtt.html 
+
+```
