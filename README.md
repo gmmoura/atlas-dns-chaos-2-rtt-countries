@@ -60,4 +60,6 @@ The demo below will produce the following output files on your local dir:
 ### What can you do with this?
  
    * Use JSON or CSV output to produce nice World heatmaps
-      
+
+### Demo visualization
+   * Go to ``visualization/``      
