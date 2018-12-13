@@ -1,7 +1,7 @@
-# .nl median RTT using ~1000 probes Atlas probes
+# .nl median RTT using ~10000 probes Atlas probes
 
   * Mesurement date: 2018-10-19 
-  * Duration: 1h
+  * Duration: 1h each 
   * frequency: 10min
   
   
