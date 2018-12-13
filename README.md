@@ -72,9 +72,10 @@
 ##  What can you do with this?
  
    * Use JSON or CSV output to produce nice World heatmaps (see demo visualization below)
-
-##  Demo visualization
+   
+##  Generate world maps
    * Go to ``visualization/``
+   * See demo https://gmmoura.github.io/atlas-dns-chaos-2-rtt-countries/visualization/10310-1544572800-1544573100.html
    
 ``` bash
 $ cd visualization/
