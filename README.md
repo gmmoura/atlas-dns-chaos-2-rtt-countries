@@ -11,9 +11,11 @@
          * probe's subregion
          * probe's firmware version
          * probe's version (v1--v4)
-      1. Produces *ready to use* aggregate stats file for the measurement, per country,
+      1. Generates *ready to use* aggregate stats file for the measurement, per country,
       in both JSON and CSV format, so OPS teams can easily integrate into their dashboards and 
       other graphs tools
+      1. Plots a graph a world map with median RTT per country for the chaos measurements, see ``visualizations``.
+      
       
 
 ## Demo
