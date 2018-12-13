@@ -13,3 +13,8 @@
   * [ns3.dns.nl](ns3-16557770-1539907200-1539993599.html)
   * [sns-pb.isc.org](isc-16557773-1539907200-1539993599.html)
   * [d.nic.fr](d-nic-fr-16557083-1539907200-1539993599.html)
+
+
+# Newer measurements (same servers) 2018-12-13
+  * [See 20181213](20181213)
+  
