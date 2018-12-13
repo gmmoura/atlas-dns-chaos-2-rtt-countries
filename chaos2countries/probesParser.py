@@ -25,7 +25,7 @@ def read_iso_countries_list():
 
     url="https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv"
     r=requests.get(url)
-    print("Download regions code list from :\n" + url)
+    #print("Download regions code list from :\n" + url)
     cr = csv.reader(r.content.decode("utf-8").split("\n") )
     countryCode_info=dict()
 

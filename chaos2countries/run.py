@@ -7,29 +7,53 @@ import json
 from  chaos2countries.chaosParser  import json_parser
 from  chaos2countries.probesParser import read_iso_countries_list, read_ripe_probe_list, read_probe_data
 import numpy as np
+from datetime import datetime
+
 
 def main():
 
 
     print("reading country code info")
     geo_data = read_iso_countries_list()
+    #https://atlas.ripe.net/api/v2/measurements/10310/results/?start=1544572800&stop=1544573100&format=json 20181212
+    tempUrl=sys.argv[1]
+    sp=(tempUrl.split("?")[1]).split("&")
+    start=sp[0].replace("start=", "")
+    stop=sp[1].replace("stop=", "")
 
-    date = sys.argv[2]
+    #convert start and stop to date
+    print("\nMeasurement starts: " + str(datetime.utcfromtimestamp(float(start)).strftime('%Y-%m-%d %H:%M:%S')))
+
+    print("Measurement end: " + str(datetime.utcfromtimestamp(float(stop)).strftime('%Y-%m-%d %H:%M:%S')))
+
+    print("Measurement duration: " + str(int(stop) - int(start)) + " seconds, or  "   + str( (int(stop) - int(start))/60) + " minutes\n")
+
+
+    date= str(datetime.utcfromtimestamp(float(start)).strftime('%Y%m%d'))
+
+
+
     probeFile = date + "-probemetadata.json"
 
-    print("reading probe metadata info")
+
+    print("Reading probe metadata info for Ripe's FTP archive:")
     ripe_data = read_ripe_probe_list(date, probeFile,geo_data)
 
-    print("reading Ripe Altas CHAOS Measurements and parsing")
+    print("\nDownloading Ripe Atlas CHAOS Measurements and parsing it")
     url = sys.argv[1]
 
     r = requests.get(url)
     measurements = json_parser(r.content.decode("utf-8"))
 
     probeDict = read_probe_data(probeFile + ".gz")
-    atlas_results = date + "-atlas-results.csv"
+    measurementID=url.split("/")[6]
 
-    # now, with all the data in hands, we gotta for each measurmenet to add the trailler
+
+    atlas_results = measurementID + "-" + date + "-" +  start + "-" + stop +  "-atlas-results.csv"
+
+    print("Writing results from Ripe JSON to CSV into: " + atlas_results)
+
+    # now, with all the data in hands, we gotta for each measuremenet to add the trailler
     csvFileFromAtlas = open(atlas_results, 'w')
     csvFileFromAtlas.write(
         "ip_src,ip_dst,proto,hostnameBind,rtt,probeID,timestamp,rcode,atlas_firmware,country,continent,subregion,probe_version\n")
@@ -45,8 +69,8 @@ def main():
 
     csvFileFromAtlas.close()
 
-    print("starting agg stats per country")
-    print("ONLY FOR RCODE=0")
+    print("DONE parsing results;\n")
+    print("Generating statistics per country from ONLY FOR RCODE=0 (valid queries)")
 
     ccDict = dict()
 
@@ -74,7 +98,12 @@ def main():
 
     # output stats.csv
     jsonDict = dict()
-    with open(date + "-stats.csv", "w") as f:
+
+    statsCSV= measurementID + "-" + date + "-" +  start + "-" + stop +  "-stats-country.csv"
+    statsJSON=measurementID + "-" + date + "-" +  start + "-" + stop +  "-stats-country.json"
+
+    print("Writing statistics per country in csv format into: " + statsCSV)
+    with open(statsCSV, "w") as f:
 
         f.write("country, nMesurements,meanRTT,percentile25RTT,medianRTT,percentile75RTT,percentile90RTT,maxRTT\n")
         for k, values in ccDict.items():
@@ -105,20 +134,22 @@ def main():
 
             #   +","+  str(np.max(values)) + "," + str(np.percentile(values,90)) )
 
-    print("writing json output")
+
+    print("Writing statistics per country in JSON format into: " + statsJSON)
 
     # create json format
-    with open(date + "-stats.json", "w") as f:
+    with open(statsJSON, "w") as f:
         json.dump(jsonDict, f)
 
 
 if __name__ == "__main__":
 
 
-    if len(sys.argv)!=3:
+    if len(sys.argv)!=2:
         print("Wrong number of parameters\n")
         print(str(len(sys.argv)))
-        print( "Usage:  python run.py $ATLAS_JSON_RAW_FILE  $DATE(YYYYMMDD) ")
+        print( "Usage:  python run.py $ATLAS_JSON_URL")
+        print("example: python3 ../chaos2countries/run.py  'https://atlas.ripe.net/api/v2/measurements/10310/results/?start=1544572800&stop=1544573100&format=json'")
     else:
 
         main()
