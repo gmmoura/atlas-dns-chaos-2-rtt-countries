@@ -22,7 +22,7 @@
    * https://gmmoura.github.io/atlas-dns-chaos-2-rtt-countries/visualization/10310-1544572800-1544573100.html
  
  
-## How-to for the above demo 
+## How-to for to generate the graph above
 
  ```bash
  
@@ -43,9 +43,13 @@
  url="https://atlas.ripe.net/api/v2/measurements/10310/results/?start=1544572800&stop=1544573100&format=json"
  
  
- #read to go:
+ #read to run:
  $ python3  ../chaos2countries/run.py  $url
  
+ #generate visualization
+$ cd visualization/
+$ python render.py ../tests/10310-20181212-1544572800-1544573100-stats-country.csv
+$ firefox 10310-1544572800-1544573100.html
   ```   
   
 ### Output files
@@ -71,7 +75,7 @@
 
 ##  What can you do with this?
  
-   * Use JSON or CSV output to produce nice World heatmaps (see demo visualization below)
+   * Use JSON or CSV output to produce nice World heatmaps or do other analysis
    
 ##  Generate world maps
    * Go to ``visualization/``
@@ -81,5 +85,4 @@
 $ cd visualization/
 $ python render.py ../tests/10310-20181212-1544572800-1544573100-stats-country.csv
 $ firefox 10310-1544572800-1544573100.html
-
 ```
