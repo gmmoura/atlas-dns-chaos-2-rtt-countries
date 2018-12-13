@@ -19,7 +19,7 @@
       
 
 ## Demo
-   * https://gmmoura.github.io/atlas-dns-chaos-2-rtt-countries/visualization/rtt.html
+   * https://gmmoura.github.io/atlas-dns-chaos-2-rtt-countries/visualization/10310-1544572800-1544573100.html
  
  
 ## How-to for the above demo 
