@@ -24,3 +24,9 @@
   * [ns3.dns.nl -- IPv6](20181213/ns3-ipv6-18119473-1544659200-1544745599.html)
   * [sns-pb.isc.org -- IPv4--20181219 ](20181219/isc-ipv4-18358062-1545177600-1545263999.html)
   * [sns-pb.isc.org -- IPv6](20181213/isc-ivp6-8119543-1544659200-1544745599.html )
+
+# Merged measurements (2018-12-13 + 2018-12-19)
+
+  * [IPv4 nameservers combined](merged20181219/ipv4.html)
+  * [IPv6 nameservers combined](merged20181219/ipv6.html)
+  
