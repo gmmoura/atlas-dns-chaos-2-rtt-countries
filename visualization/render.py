@@ -1,7 +1,4 @@
-import plotly.plotly as py
 import pandas as pd
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-import plotly.offline as offline
 import plotly.graph_objs as go
 import sys
 
@@ -54,7 +51,7 @@ def main():
             width = 0.5
             ) ),
         colorbar = dict(
-            autotick = False,
+            # autotick = False,
             title = 'ms'),
           ) ]
 
@@ -62,7 +59,7 @@ def main():
     sp=sys.argv[1].split("-")
     mid=sp[0]
     if "/" in mid:
-        #take the last
+        # take the last
         mid=mid.split("/")[-1]
 
     start=sp[2]
@@ -74,15 +71,16 @@ def main():
             showframe = False,
             showcoastlines = False,
             projection = dict(
-                type = 'Mercator'
+                type = 'mercator'
             )
         )
     )
 
     outHTML= mid +"-" + start+ "-" + end + ".html"
 
-    fig = dict( data=data, layout=layout )
-    offline.plot( fig, validate=False, filename=outHTML )
+    fig = go.Figure( data=data, layout=layout)
+    fig.write_html(outHTML, auto_open=True)
+
 
 if __name__ == "__main__":
 
